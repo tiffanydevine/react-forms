@@ -38,24 +38,28 @@ const MainInterface = React.createClass({
   },
 
   render: function(){
+    var filteredAppointments = this.state.data; 
+    filteredAppointments = filteredAppointments.map(function(item, i){
+
+       return (
+        <li className='pet-item media' key={i}>
+          <div className='pet-info media-body'>
+            <div className='pet-head'>
+              <span className='pet-name'>{this.state.data[i].petName}</span>
+              <span className='apt-date pull-right'>{this.state.data[i].aptDate}</span>
+            </div>
+            <div className='owner-name'>
+              <span className='label-item'> Owner: </span> {this.state.data[i].ownerName}
+            </div>
+            <div className='apt-notes'>{this.state.data[i].aptNotes}</div>
+          </div>
+        </li>)
+    }.bind(this))
    
 
     return (
       <div className='interface'>
-        <ul className='item-list media-list'>
-          <li className='pet-item media'>
-            <div className='pet-info media-body'>
-              <div className='pet-head'>
-                <span className='pet-name'>{this.state.data[0].petName}</span>
-                <span className='apt-date pull-right'>{this.state.data[0].aptDate}</span>
-              </div>
-              <div className='owner-name'>
-                <span className='label-item'> Owner: </span> {this.state.data[0].ownerName}
-              </div>
-              <div className='apt-notes'>{this.state.data[0].aptNotes}</div>
-            </div>
-          </li>
-        </ul>  
+        <ul className='item-list media-list'>{filteredAppointments}</ul>  
       </div>
       )
   }, 
