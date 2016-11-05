@@ -17,12 +17,26 @@ const MainInterface = React.createClass({
       showTitle = 'New '
     }
 
-    return (
-      <h1>{showTitle}
-      {this.state.title}</h1>
+    var displayList = {
+      display: this.state.show ? 'block' : 'none', 
+      color: 'red'
+    }
 
+    return (
+      <div className='interface'>
+        <h1>{showTitle} {this.state.title}</h1>
+        <ul style={displayList}>
+          <li>Item 1</li>
+          <li>Item 2</li>
+          <li>Item 3</li>
+          <li>Item 4</li>
+
+        </ul>
+      </div>
       )
-  }
+  }, 
+
+
 
 }); 
 
